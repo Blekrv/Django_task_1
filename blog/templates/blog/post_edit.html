@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+
+
+{% block content %}
+
+<a href="{% url 'post_list' %}">Home</a>
+<h2>New POST</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if 'edit' in request.build_abbsolute_uri %}
+    <a href="{% url 'post_detail' pk=pk %}">Cancel</a>
+    {% endif %}
+    <!-- <button type="reset">Cancel{{pk}}</button> -->
+    <button type="submit">Save</button>
+</form>
+{% endblock content %}
