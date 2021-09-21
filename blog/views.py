@@ -85,6 +85,7 @@ def contact(request):
                 return HttpResponse('Find incorrect header!')
             messages.success(request, 'Message was sended!')
             return redirect('contact')
+        messages.error(request, "Error. Message not sent.")
     form = ContactForm()
     return render(request, 'blog/contact.html', {'form': form})
 
